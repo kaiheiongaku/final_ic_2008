@@ -11,6 +11,16 @@ class Cookbook
     @recipes << recipe
   end
 
-  def total_calories
-    @recipes.each do |recipe|
+  def ingredients
+    @recipes.map do |recipe|
+      recipe.ingredients
+    end
+  end
+
+  def highest_calorie_meal
+    @recipes.max do |recipe|
+      recipe.total_calories
+    end
+  end
+
 end
