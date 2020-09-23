@@ -2,7 +2,8 @@ require './lib/ingredient'
 
 class Recipe
   attr_reader :name,
-              :ingredients_required
+              :ingredients_required,
+              :ingredients
 
   def initialize(name)
     @name = name
@@ -16,4 +17,14 @@ class Recipe
   def ingredients
     @ingredients_required.keys
   end
+
+  def total_calories
+
+    ingredients.map do |ingredient|
+      ingredient.calories * @ingredients_required[ingredient]
+    end.sum
+  end
+
+
+
 end
